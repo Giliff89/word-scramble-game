@@ -10,9 +10,30 @@
         var WORDS     = ["january", "february", "march", "april", "may",
                          "june", "july", "august", "september", "october",
                          "november", "december"];
-        var SCRAMBLED = ["nuayraj", "rryaubfe", "hrcma", "lipra", "aym",
-                         "uenj", "luyj", "guutsa", "ptmbeeres", "ctbreoo",
-                         "veneobrm", "cebremed"];
+
+        var word_scramble = function (word_list) {
+            var scrambled_list = [];
+
+            for (var word of word_list)
+                var char_list = word.split("");
+                var len = char_list.length;
+
+                for (var index = len - 1; index > 0; index--) {
+                    var swapper = Math.floor(Math.random() * (index + 1));
+                    var tmp = char_list[index];
+                    char_list[index] = char_list[swapper];
+                    char_list[swapper] = tmp;
+                }
+
+                //WHY BROKEN; shows only last word in word_list
+                scrambled_list.push(char_list.join(""));
+                console.log(scrambled_list);
+
+            return scrambled_list;
+        };                 
+
+        var SCRAMBLED = word_scramble(WORDS);
+        console.log(SCRAMBLED)
 
         var playing = true;
 
